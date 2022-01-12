@@ -62,5 +62,6 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    flex-grow: 1;
 }
 </style>
