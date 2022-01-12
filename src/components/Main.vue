@@ -1,9 +1,10 @@
 <template>
     <main>
         <input type="text" placeholder="cerca il film" v-model="userSearch">
-        <button @click="getFilm">cerca</button>
+        <button @click="getFilm" >cerca</button>
         <div class="film-card">
-            <FilmCard v-for="(film, index) in apiArray" :key="index" :details="film"/>
+            <FilmCard v-for="film  in apiFilmArray" :key="film.id" :details="film"/>
+            <SeriesCard v-for="series  in apiSeriesArray" :key="series.id" :details="series"/> 
         </div>
     </main>
 </template>
@@ -11,15 +12,18 @@
 import axios from 'axios';
 
 import FilmCard from "./FilmCard.vue"
+import SeriesCard from "./SeriesCard.vue"
 export default {
   name: "Main",
   components: {
       FilmCard,
+      SeriesCard,
     },
   data: function (){
       return {
           userSearch: '',
-          apiArray: [],
+          apiFilmArray: [],
+          apiSeriesArray: [],
       }
   },
   methods: {
@@ -31,10 +35,22 @@ export default {
             }
         })
         .then((response) => {
-            this.apiArray = response.data.results;
+             this.apiFilmArray = response.data.results;
             console.log(response.data.results)
         });
-      }
+          axios.get('https://api.themoviedb.org/3/search/tv',{
+            params: {
+                api_key: '98fa6642cc307249e22192103cf1d9ae',
+                query: this.userSearch,
+            }
+        })
+        .then((responses) => {
+             this.apiSeriesArray = responses.data.results;
+            
+        });
+        
+      },
+      
     }
             
 };

@@ -2,10 +2,10 @@
     <div class="container">
         <div>
             <ul>
-            <li>{{ details.title }}</li>
-            <li>{{ details.original_title }}</li>
+            <li>{{ details.name }}</li>
+            <li>{{ details.original_name }}</li>
             <li>
-                <div><img :src="require(`../assets/img/${details.original_language}.png`)" alt=""></div>
+                <div><img :src="require(`../assets/img/${details.original_language}.png`)" :alt= details.original_language ></div>
             </li>
             <li>{{ details.vote_average }}</li>
             
@@ -16,10 +16,21 @@
 
 <script>
 export default {
-    name: "FilmCard",
+    name: "SeriesCard",
     props: {
         details: Object
-    }
+    },
+    data: function (){
+        return{
+            star: details.vote_average
+        }
+
+    },
+    methods: {
+        rateConverter: function(star){
+            star = details.vote_average/2
+        }
+    },
 }
 </script>
 
