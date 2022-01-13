@@ -36,6 +36,7 @@ export default {
     },
 
     methods: {
+        // trasformare il voto in stelle
         starConverter: function(){
             if(this.star === 0){
                 this.star = `<span><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>`
@@ -54,6 +55,7 @@ export default {
         }
 
     },
+    // inizializzare la funzione di conversione voto
     created: function() {
         this.starConverter()
     }
@@ -71,6 +73,7 @@ export default {
        min-width: 343px;
         min-height: 513px; 
     }
+    // elementi hover
     :hover +.poster{
         display: none;
             

@@ -33,6 +33,7 @@ export default {
       }
   },
   methods: {
+    //   chiamate API
       getFilm: function(){
           axios.get('https://api.themoviedb.org/3/search/movie',{
             params: {
