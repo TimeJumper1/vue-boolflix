@@ -2,9 +2,15 @@
     <main>
         <input type="text" placeholder="cerca il film" v-model="userSearch">
         <button @click="getFilm" >cerca</button>
+        <h2>FILM</h2>
         <div class="film-card">
             <FilmCard v-for="film  in apiFilmArray" :key="film.id" :details="film"/>
-            <SeriesCard v-for="series  in apiSeriesArray" :key="series.id" :details="series"/> 
+            <!-- <SeriesCard v-for="series  in apiSeriesArray" :key="series.id" :details="series"/>  -->
+        </div>
+        <h2>SERIE</h2>
+        <div class="film-card">
+            
+            <FilmCard v-for="series  in apiSeriesArray" :key="series.id" :details="series"/> 
         </div>
     </main>
 </template>
@@ -12,12 +18,12 @@
 import axios from 'axios';
 
 import FilmCard from "./FilmCard.vue"
-import SeriesCard from "./SeriesCard.vue"
+// import SeriesCard from "./SeriesCard.vue"
 export default {
   name: "Main",
   components: {
       FilmCard,
-      SeriesCard,
+    //   SeriesCard,
     },
   data: function (){
       return {
@@ -58,6 +64,20 @@ export default {
 
 
 <style scoped lang="scss">
+input{
+    margin: 10px;
+    border: 3px solid rgb(189, 177, 15);
+    border-radius: 3px;
+    padding:2px 5px ;
+    color: rgba(230, 230, 230, 0.87);
+}
+button{
+    border: 3px solid rgb(189, 177, 15);
+    border-radius: 3px;
+    padding: 2px 5px;
+    font-size: 17px;
+    color: rgba(230, 230, 230, 0.87);
+}
 .film-card{
     display: flex;
     flex-direction: row;

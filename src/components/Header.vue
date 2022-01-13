@@ -1,6 +1,6 @@
 <template>
     <header>
-        il logo andrà qui
+       <h1>BOOLFLIX</h1> 
     </header>
 </template>
 <script>
@@ -12,5 +12,8 @@ export default {
 
 
 <style scoped lang="scss">
-
+h1{
+  font-size: 70px;
+  color: rgb(189, 177, 15);
+}
 </style>
